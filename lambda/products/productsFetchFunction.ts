@@ -26,6 +26,13 @@ export async function handler(
         body: JSON.stringify({ message: 'GET Products - OK' }),
       };
     }
+  } else if (event.resource === '/products/{id}') {
+    const productId = event.pathParameters!.id as string;
+    console.log(`GET - /products/${productId}`);
+    return {
+      statusCode: 200,
+      body: `GET - /products/${productId}`,
+    };
   }
 
   return {
